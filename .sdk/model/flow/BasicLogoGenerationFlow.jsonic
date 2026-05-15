@@ -1,0 +1,28 @@
+# BasicLogoGenerationFlow
+
+main: kit: flow: BasicLogoGenerationFlow:
+{
+  entity: "logo_generation",
+  kind: "basic",
+  name: "BasicLogoGenerationFlow",
+  step: [
+    {
+      input: {
+        ref: "logo_generation_ref01",
+        srcdatavar: "logo_generation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-logo_generation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLogoGenerationFlow"
+}

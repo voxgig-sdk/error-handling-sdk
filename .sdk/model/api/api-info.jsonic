@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://freepublicapis.com/error-handling-api"
+      }
+      description: "This API provides standardized error messages and status codes for various requests. It helps developers understand and fix issues by providing specific feedback when requests fail."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://abhi-api.vercel.app"
+        }
+      ]
+      title: "Error Handling API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

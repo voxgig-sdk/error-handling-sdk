@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "logo_generation": {
+      "LOGO_GENERATION00": {},
+      "LOGO_GENERATION01": {},
+      "LOGO_GENERATION02": {}
+    }
+  },
+  "new": {
+    "logo_generation": {
+      "logo_generation_ref01": {}
+    }
+  }
+}

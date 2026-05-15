@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Error Handling API",
+    "description": "This API provides standardized error messages and status codes for various requests. It helps developers understand and fix issues by providing specific feedback when requests fail.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://freepublicapis.com/error-handling-api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://abhi-api.vercel.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/logo/neon": {
+      "get": {
+        "summary": "Generate neon logo",
+        "description": "Generates a neon-style logo with the specified text. Returns error messages when the text parameter is missing or invalid.",
+        "operationId": "getNeonLogo",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Text to display in the neon logo",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "example": "Hello"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated neon logo",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing or invalid text parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "missingText": {
+                    "summary": "Missing text parameter",
+                    "value": {
+                      "error": "Missing required parameter: text",
+                      "statusCode": 400,
+                      "message": "The 'text' query parameter is required to generate a neon logo"
+                    }
+                  },
+                  "emptyText": {
+                    "summary": "Empty text parameter",
+                    "value": {
+                      "error": "Invalid parameter value",
+                      "statusCode": 400,
+                      "message": "The 'text' parameter cannot be empty"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Internal server error",
+                  "statusCode": 500,
+                  "message": "An unexpected error occurred while processing your request"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Logo Generation"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error",
+          "statusCode",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Short error description"
+          },
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP status code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message explaining the issue"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Logo Generation",
+      "description": "Endpoints for generating stylized logos"
+    }
+  ]
+}
