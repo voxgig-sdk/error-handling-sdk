@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/error-handling-sdk/core"
+import "github.com/voxgig-sdk/error-handling-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/error-handling-sdk/core"
+import "github.com/voxgig-sdk/error-handling-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

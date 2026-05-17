@@ -1,10 +1,10 @@
 package voxgigerrorhandlingsdk
 
 import (
-	"github.com/voxgig-sdk/error-handling-sdk/core"
-	"github.com/voxgig-sdk/error-handling-sdk/entity"
-	"github.com/voxgig-sdk/error-handling-sdk/feature"
-	_ "github.com/voxgig-sdk/error-handling-sdk/utility"
+	"github.com/voxgig-sdk/error-handling-sdk/go/core"
+	"github.com/voxgig-sdk/error-handling-sdk/go/entity"
+	"github.com/voxgig-sdk/error-handling-sdk/go/feature"
+	_ "github.com/voxgig-sdk/error-handling-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

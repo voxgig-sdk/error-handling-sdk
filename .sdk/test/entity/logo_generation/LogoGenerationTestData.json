@@ -1,9 +1,15 @@
 {
   "existing": {
     "logo_generation": {
-      "LOGO_GENERATION00": {},
-      "LOGO_GENERATION01": {},
-      "LOGO_GENERATION02": {}
+      "LOGO_GENERATION00": {
+        "id": "LOGO_GENERATION00"
+      },
+      "LOGO_GENERATION01": {
+        "id": "LOGO_GENERATION01"
+      },
+      "LOGO_GENERATION02": {
+        "id": "LOGO_GENERATION02"
+      }
     }
   },
   "new": {

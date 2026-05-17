@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/error-handling-sdk"
-	"github.com/voxgig-sdk/error-handling-sdk/core"
+	sdk "github.com/voxgig-sdk/error-handling-sdk/go"
+	"github.com/voxgig-sdk/error-handling-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/error-handling-sdk/go/utility/struct"
 )
 
 func TestLogoGenerationEntity(t *testing.T) {

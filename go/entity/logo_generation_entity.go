@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/error-handling-sdk/core"
+	"github.com/voxgig-sdk/error-handling-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/error-handling-sdk/go/utility/struct"
 )
 
 type LogoGenerationEntity struct {

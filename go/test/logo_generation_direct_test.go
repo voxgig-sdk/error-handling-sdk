@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/error-handling-sdk"
-	"github.com/voxgig-sdk/error-handling-sdk/core"
+	sdk "github.com/voxgig-sdk/error-handling-sdk/go"
+	"github.com/voxgig-sdk/error-handling-sdk/go/core"
 )
 
 func TestLogoGenerationDirect(t *testing.T) {
