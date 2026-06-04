@@ -64,14 +64,12 @@ def _logo_generation_direct_setup(mockres):
     env = runner.env_override({
         "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID": {},
         "ERRORHANDLING_TEST_LIVE": "FALSE",
-        "ERRORHANDLING_APIKEY": "NONE",
     })
 
     live = env.get("ERRORHANDLING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ERRORHANDLING_APIKEY"),
         }
         client = ErrorHandlingSDK(merged_opts)
         return {

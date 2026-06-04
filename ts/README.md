@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { ErrorHandlingSDK } from 'error-handling'
 
-const client = new ErrorHandlingSDK({
-  apikey: process.env.ERROR-HANDLING_APIKEY,
-})
+const client = new ErrorHandlingSDK({})
 ```
 
 ### 3. Load a logogeneration
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ErrorHandlingSDK({ apikey: '...' })
+const client = new ErrorHandlingSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new ErrorHandlingSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ERROR-HANDLING_TEST_LIVE=TRUE
-ERROR-HANDLING_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new ErrorHandlingSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new ErrorHandlingSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

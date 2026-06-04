@@ -20,9 +20,6 @@ class ErrorHandlingConfig
             ],
             "options" => [
                 "base" => "https://abhi-api.vercel.app",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
