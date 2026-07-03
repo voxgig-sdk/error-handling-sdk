@@ -10,7 +10,7 @@ The Python SDK for the ErrorHandling API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install error-handling-sdk
+pip install voxgig-sdk-error-handling
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The PHP SDK for the ErrorHandling API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/error-handling-sdk
+composer require voxgig-sdk/error-handling
 ```
 
 

@@ -10,7 +10,7 @@ The Lua SDK for the ErrorHandling API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install error-handling-sdk
+luarocks install voxgig-sdk-error-handling
 ```
 
 If the module is not yet published, add the source directory to

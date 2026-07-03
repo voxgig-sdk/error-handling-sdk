@@ -10,7 +10,7 @@ The TypeScript SDK for the ErrorHandling API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install error-handling
+npm install @voxgig-sdk/error-handling
 ```
 ## Tutorial: your first API call
 

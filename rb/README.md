@@ -10,13 +10,13 @@ The Ruby SDK for the ErrorHandling API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install error-handling-sdk
+gem install voxgig-sdk-error-handling
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "error-handling-sdk"
+gem "voxgig-sdk-error-handling"
 ```
 
 Then run:

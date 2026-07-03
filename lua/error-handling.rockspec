@@ -8,12 +8,14 @@ source = {
   dir = "error-handling-sdk/lua"
 }
 description = {
-  summary = "ErrorHandling SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Error Handling public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/error-handling-sdk",
+  issues_url = "https://github.com/voxgig-sdk/error-handling-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "error-handling" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
