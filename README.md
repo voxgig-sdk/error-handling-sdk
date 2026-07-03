@@ -1,19 +1,8 @@
 # ErrorHandling SDK
 
-Generate neon-style text logos from the Abhi-API logo subset
+Error Handling API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Error Handling API
-
-This SDK wraps a small slice of [Abhi-API](https://abhi-api.vercel.app), a free public API by Abhishek Suresh that bundles many small endpoints across categories such as logo generation, search, downloaders, jokes, and utilities. The "Error Handling" slug groups the logo-generation endpoint that returns a generated image based on a `text` query parameter.
-
-What you get from the API:
-
-- A single `GET /api/logo/neon` endpoint that produces a neon-styled text logo from a `text` query string.
-- Image output suitable for embedding directly in pages or downloading.
-
-Operational notes: the upstream service is hosted on Vercel and has no documented authentication or rate limits. CORS is reported as disabled on the freepublicapis listing, so browser-side use may require a proxy. There is no formal SLA — treat the API as best-effort.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install error-handling-sdk
 luarocks install error-handling-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ErrorHandlingSDK } from 'error-handling'
 
-const client = new ErrorHandlingSDK({})
+const client = new ErrorHandlingSDK({
+  apikey: process.env.ERROR-HANDLING_APIKEY,
+})
 
+// Load logogeneration data
+const logogeneration = await client.LogoGeneration().load({})
+console.log(logogeneration.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **LogoGeneration** | Endpoint that renders a neon-styled text logo from a `text` query parameter, served at `GET /api/logo/neon`. | `/api/logo/neon` |
+| **LogoGeneration** |  | `/api/logo/neon` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from errorhandling_sdk import ErrorHandlingSDK
 
-client = ErrorHandlingSDK({})
+client = ErrorHandlingSDK({
+    "apikey": os.environ.get("ERROR-HANDLING_APIKEY"),
+})
 
 
 # Load a specific logogeneration
-logogeneration, err = client.LogoGeneration(None).load(
-    {"id": "example_id"}, None
-)
+logogeneration, err = client.LogoGeneration().load({"id": "example_id"})
+print(logogeneration)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ logogeneration, err = client.LogoGeneration(None).load(
 <?php
 require_once 'errorhandling_sdk.php';
 
-$client = new ErrorHandlingSDK([]);
+$client = new ErrorHandlingSDK([
+    "apikey" => getenv("ERROR-HANDLING_APIKEY"),
+]);
 
 
 // Load a specific logogeneration
-[$logogeneration, $err] = $client->LogoGeneration(null)->load(
-    ["id" => "example_id"], null
-);
+[$logogeneration, $err] = $client->LogoGeneration()->load(["id" => "example_id"]);
+print_r($logogeneration);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new ErrorHandlingSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/error-handling-sdk/go"
 
-client := sdk.NewErrorHandlingSDK(map[string]any{})
+client := sdk.NewErrorHandlingSDK(map[string]any{
+    "apikey": os.Getenv("ERROR-HANDLING_APIKEY"),
+})
 
+// Load logogeneration data
+logogeneration, err := client.LogoGeneration(nil).Load(map[string]any{}, nil)
+fmt.Println(logogeneration)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewErrorHandlingSDK(map[string]any{})
 ```ruby
 require_relative "ErrorHandling_sdk"
 
-client = ErrorHandlingSDK.new({})
+client = ErrorHandlingSDK.new({
+  "apikey" => ENV["ERROR-HANDLING_APIKEY"],
+})
 
 
 # Load a specific logogeneration
-logogeneration, err = client.LogoGeneration(nil).load(
-  { "id" => "example_id" }, nil
-)
+logogeneration, err = client.LogoGeneration().load({ "id" => "example_id" })
+puts logogeneration
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ logogeneration, err = client.LogoGeneration(nil).load(
 ```lua
 local sdk = require("error-handling_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ERROR-HANDLING_APIKEY"),
+})
 
 
 -- Load a specific logogeneration
-local logogeneration, err = client:LogoGeneration(nil):load(
-  { id = "example_id" }, nil
-)
+local logogeneration, err = client:LogoGeneration():load({ id = "example_id" })
+print(logogeneration)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.LogoGeneration().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ErrorHandlingSDK.test(None, None)
-result, err = client.LogoGeneration(None).load(
-    {"id": "test01"}, None
-)
+client = ErrorHandlingSDK.test()
+result, err = client.LogoGeneration().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ErrorHandlingSDK::test(null, null);
-[$result, $err] = $client->LogoGeneration(null)->load(
-    ["id" => "test01"], null
-);
+$client = ErrorHandlingSDK::test();
+[$result, $err] = $client->LogoGeneration()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.LogoGeneration(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.LogoGeneration(nil).Load(
 ### Ruby
 
 ```ruby
-client = ErrorHandlingSDK.test(nil, nil)
-result, err = client.LogoGeneration(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ErrorHandlingSDK.test
+result, err = client.LogoGeneration().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:LogoGeneration(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:LogoGeneration():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Error Handling API
-
-- Upstream: [https://abhi-api.vercel.app](https://abhi-api.vercel.app)
-
-- The Abhi-API service does not publish an explicit license.
-- Created and maintained by Abhishek Suresh; treat the service as third-party hosted.
-- No documented attribution requirement, but credit to the upstream project is good practice.
-- Availability and behaviour can change at any time; do not rely on it for critical workloads.
 
 ---
 

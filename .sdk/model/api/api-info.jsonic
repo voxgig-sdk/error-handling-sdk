@@ -16,25 +16,7 @@ main: {
       ]
       title: "Error Handling API"
       version: "1.0.0"
-      tagline: "Generate neon-style text logos from the Abhi-API logo subset"
-      homepage: "https://abhi-api.vercel.app"
-      license_short: "No published license; use at your own discretion."
-      license_md: `- The Abhi-API service does not publish an explicit license.
-- Created and maintained by Abhishek Suresh; treat the service as third-party hosted.
-- No documented attribution requirement, but credit to the upstream project is good practice.
-- Availability and behaviour can change at any time; do not rely on it for critical workloads.`
-      about_md: `This SDK wraps a small slice of [Abhi-API](https://abhi-api.vercel.app), a free public API by Abhishek Suresh that bundles many small endpoints across categories such as logo generation, search, downloaders, jokes, and utilities. The "Error Handling" slug groups the logo-generation endpoint that returns a generated image based on a \`text\` query parameter.
-
-What you get from the API:
-
-- A single \`GET /api/logo/neon\` endpoint that produces a neon-styled text logo from a \`text\` query string.
-- Image output suitable for embedding directly in pages or downloading.
-
-Operational notes: the upstream service is hosted on Vercel and has no documented authentication or rate limits. CORS is reported as disabled on the freepublicapis listing, so browser-side use may require a proxy. There is no formal SLA — treat the API as best-effort.`
-      entity_desc: {
-        logo_generation: "Endpoint that renders a neon-styled text logo from a `text` query parameter, served at `GET /api/logo/neon`."
-      }
-      auth: false
     }
   }
 }
+

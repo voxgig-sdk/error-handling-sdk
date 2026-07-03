@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID': idmap,
     'ERROR_HANDLING_TEST_LIVE': 'FALSE',
     'ERROR_HANDLING_TEST_EXPLAIN': 'FALSE',
+    'ERROR_HANDLING_APIKEY': 'NONE',
   })
 
   idmap = env['ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ErrorHandlingSDK(merge([
       {
+        apikey: env.ERROR_HANDLING_APIKEY,
       },
       extra
     ]))
