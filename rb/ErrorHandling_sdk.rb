@@ -208,13 +208,7 @@ class ErrorHandlingSDK
   end
 
 
-  # Idiomatic facade: client.logo_generation.list / client.logo_generation.load({ "id" => ... })
-  def logo_generation
-    require_relative 'entity/logo_generation_entity'
-    @logo_generation ||= LogoGenerationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.logo_generation instead.
+  # Canonical facade: client.LogoGeneration.list / client.LogoGeneration.load({ "id" => ... })
   def LogoGeneration(data = nil)
     require_relative 'entity/logo_generation_entity'
     LogoGenerationEntity.new(self, data)

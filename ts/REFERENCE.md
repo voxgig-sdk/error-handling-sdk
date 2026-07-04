@@ -109,7 +109,7 @@ Alias for `ErrorHandlingSDK.test()`.
 ## LogoGenerationEntity
 
 ```ts
-const logo_generation = client.logo_generation
+const logo_generation = client.LogoGeneration()
 ```
 
 ### Operations
@@ -119,7 +119,7 @@ const logo_generation = client.logo_generation
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.logo_generation.load({ id: 'logo_generation_id' })
+const result = await client.LogoGeneration().load({ id: 'logo_generation_id' })
 ```
 
 ### Common Methods

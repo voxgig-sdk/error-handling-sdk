@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## LogoGenerationEntity
 
 ```python
-logo_generation = client.logo_generation
+logo_generation = client.LogoGeneration()
 ```
 
 ### Operations
@@ -90,7 +90,7 @@ logo_generation = client.logo_generation
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.logo_generation.load({"id": "logo_generation_id"})
+result = client.LogoGeneration().load({"id": "logo_generation_id"})
 ```
 
 ### Common Methods

@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## LogoGenerationEntity
 
 ```ruby
-logo_generation = client.logo_generation
+logo_generation = client.LogoGeneration
 ```
 
 ### Operations
@@ -96,7 +96,7 @@ logo_generation = client.logo_generation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.logo_generation.load({ "id" => "logo_generation_id" })
+result = client.LogoGeneration.load({ "id" => "logo_generation_id" })
 ```
 
 ### Common Methods

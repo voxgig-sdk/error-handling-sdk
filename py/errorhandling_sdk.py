@@ -220,25 +220,15 @@ class ErrorHandlingSDK:
         }
 
 
-    @property
-    def logo_generation(self):
-        """Idiomatic facade: client.logo_generation.list() / client.logo_generation.load({"id": ...})."""
-        from entity.logo_generation_entity import LogoGenerationEntity
-        cached = getattr(self, "_logo_generation", None)
-        if cached is None:
-            cached = LogoGenerationEntity(self, None)
-            self._logo_generation = cached
-        return cached
-
-    def LogoGeneration(self, data=None):
-        # Deprecated: use client.logo_generation instead.
+    def LogoGeneration(self, data=None) -> "LogoGenerationEntity":
+        """Entity factory: client.LogoGeneration().list({}) / client.LogoGeneration().load({"id": ...})."""
         from entity.logo_generation_entity import LogoGenerationEntity
         return LogoGenerationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ErrorHandlingSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class ErrorHandlingSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.logo_generation_entity import LogoGenerationEntity

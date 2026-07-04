@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## LogoGenerationEntity
 
 ```lua
-local logo_generation = client:logo_generation(nil)
+local logo_generation = client:LogoGeneration(nil)
 ```
 
 ### Operations
@@ -93,7 +93,7 @@ local logo_generation = client:logo_generation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:logo_generation():load({ id = "logo_generation_id" })
+local result, err = client:LogoGeneration():load({ id = "logo_generation_id" })
 ```
 
 ### Common Methods

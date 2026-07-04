@@ -233,10 +233,10 @@ class ErrorHandlingSDK
 
     private $_logo_generation = null;
 
-    // Idiomatic facade: $client->logo_generation()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias LogoGeneration() (PHP method
-    // names are case-insensitive).
-    public function logo_generation($data = null)
+    // Canonical facade: $client->LogoGeneration()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->logo_generation()
+    // resolves here too.
+    public function LogoGeneration($data = null)
     {
         require_once __DIR__ . '/entity/logo_generation_entity.php';
         if ($data === null) {

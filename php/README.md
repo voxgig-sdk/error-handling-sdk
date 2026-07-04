@@ -33,9 +33,10 @@ $client = new ErrorHandlingSDK();
 
 ```php
 try {
-    $result = $client->logogeneration()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare LogoGeneration record (throws on error).
+    $logogeneration = $client->LogoGeneration()->load(["id" => "example_id"]);
+    print_r($logogeneration);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ErrorHandlingSDK::test();
+$client = ErrorHandlingSDK::test([
+    "entity" => ["logogeneration" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->logogeneration()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$logogeneration = $client->LogoGeneration()->load(["id" => "test01"]);
+print_r($logogeneration);
 ```
 
 ### Use a custom fetch function
@@ -222,7 +227,7 @@ API path: `/api/logo/neon`
 
 ### LogoGeneration
 
-Create an instance: `const logo_generation = client.logo_generation`
+Create an instance: `$logo_generation = $client->LogoGeneration();`
 
 #### Operations
 
@@ -232,8 +237,9 @@ Create an instance: `const logo_generation = client.logo_generation`
 
 #### Example: Load
 
-```ts
-const logo_generation = await client.logo_generation.load({ id: 'logo_generation_id' })
+```php
+// load() returns the bare LogoGeneration record (throws on error).
+$logo_generation = $client->LogoGeneration()->load(["id" => "logo_generation_id"]);
 ```
 
 
@@ -308,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$logogeneration = $client->logogeneration();
+$logogeneration = $client->LogoGeneration();
 $logogeneration->load(["id" => "example_id"]);
 
 // $logogeneration->dataGet() now returns the loaded logogeneration data

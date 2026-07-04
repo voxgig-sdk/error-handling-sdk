@@ -33,10 +33,12 @@ client = ErrorHandlingSDK()
 
 ### 3. Load a logogeneration
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.logogeneration.load({"id": "example_id"})
-    print(result)
+    logogeneration = client.LogoGeneration().load({"id": "example_id"})
+    print(logogeneration)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ErrorHandlingSDK.test()
 
-result = client.logogeneration.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+logogeneration = client.LogoGeneration().load({"id": "test01"})
+# logogeneration contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -217,7 +220,7 @@ API path: `/api/logo/neon`
 
 ### LogoGeneration
 
-Create an instance: `const logo_generation = client.logo_generation`
+Create an instance: `logo_generation = client.LogoGeneration()`
 
 #### Operations
 
@@ -227,8 +230,8 @@ Create an instance: `const logo_generation = client.logo_generation`
 
 #### Example: Load
 
-```ts
-const logo_generation = await client.logo_generation.load({ id: 'logo_generation_id' })
+```python
+logo_generation = client.LogoGeneration().load({"id": "logo_generation_id"})
 ```
 
 
@@ -302,7 +305,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-logogeneration = client.logogeneration
+logogeneration = client.LogoGeneration()
 logogeneration.load({"id": "example_id"})
 
 # logogeneration.data_get() now returns the loaded logogeneration data

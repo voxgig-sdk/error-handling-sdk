@@ -26,9 +26,9 @@ import { ErrorHandlingSDK } from '@voxgig-sdk/error-handling'
 
 const client = new ErrorHandlingSDK()
 
-// Load logogeneration data
-const logogeneration = await client.logogeneration.load({})
-console.log(logogeneration.data)
+// Load logogeneration data (returns a LogoGeneration)
+const logogeneration = await client.LogoGeneration().load()
+console.log(logogeneration)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from errorhandling_sdk import ErrorHandlingSDK
 client = ErrorHandlingSDK()
 
 
-# Load a specific logogeneration
-logogeneration = client.logogeneration.load({"id": "example_id"})
+# Load a specific logogeneration (returns the record, raises on error)
+logogeneration = client.LogoGeneration().load({"id": "example_id"})
 print(logogeneration)
 ```
 
@@ -98,8 +98,8 @@ require_once 'errorhandling_sdk.php';
 $client = new ErrorHandlingSDK();
 
 
-// Load a specific logogeneration
-$logogeneration = $client->logogeneration()->load(["id" => "example_id"]);
+// Load a specific logogeneration (returns the bare record; throws on error)
+$logogeneration = $client->LogoGeneration()->load(["id" => "example_id"]);
 print_r($logogeneration);
 ```
 
@@ -123,8 +123,8 @@ require_relative "ErrorHandling_sdk"
 client = ErrorHandlingSDK.new
 
 
-# Load a specific logogeneration
-logogeneration = client.logogeneration.load({ "id" => "example_id" })
+# Load a specific logogeneration (returns the bare record; raises on error)
+logogeneration = client.LogoGeneration.load({ "id" => "example_id" })
 puts logogeneration
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific logogeneration
-local logogeneration, err = client:logogeneration():load({ id = "example_id" })
+local logogeneration, err = client:LogoGeneration():load({ id = "example_id" })
 print(logogeneration)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ErrorHandlingSDK.test()
-const result = await client.logogeneration.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const logogeneration = await client.LogoGeneration().load({ id: 'test01' })
+// logogeneration is a bare LogoGeneration populated with mock data
+console.log(logogeneration)
 ```
 
 ### Python
 
 ```python
 client = ErrorHandlingSDK.test()
-result = client.logogeneration.load({"id": "test01"})
+logogeneration = client.LogoGeneration().load({"id": "test01"})
+print(logogeneration)
 ```
 
 ### PHP
 
 ```php
-$client = ErrorHandlingSDK::test();
-$result = $client->logogeneration()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ErrorHandlingSDK::test([
+    "entity" => ["logogeneration" => ["test01" => ["id" => "test01"]]],
+]);
+$logogeneration = $client->LogoGeneration()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.LogoGeneration(nil).Load(
 ### Ruby
 
 ```ruby
-client = ErrorHandlingSDK.test
-result = client.logogeneration.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ErrorHandlingSDK.test({
+  "entity" => { "logogeneration" => { "test01" => { "id" => "test01" } } },
+})
+logogeneration = client.LogoGeneration.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:logogeneration():load({ id = "test01" })
+local result, err = client:LogoGeneration():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

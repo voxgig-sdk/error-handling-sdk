@@ -204,14 +204,7 @@ class ErrorHandlingSDK {
 
 
 
-  _logo_generation?: LogoGenerationEntity
-
-  // Idiomatic facade: `client.logo_generation.list()` / `client.logo_generation.load({ id })`.
-  get logo_generation(): LogoGenerationEntity {
-    return (this._logo_generation ??= new LogoGenerationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.logo_generation` instead. */
+  // Entity access: `client.LogoGeneration().list()` / `client.LogoGeneration().load({ id })`.
   LogoGeneration(data?: any) {
     const self = this
     return new LogoGenerationEntity(self,data)

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:logo_generation():list() / client:logo_generation():load({ id = ... })
-function ErrorHandlingSDK:logo_generation(data)
+-- Idiomatic facade: client:LogoGeneration():list() / client:LogoGeneration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ErrorHandlingSDK:LogoGeneration(data)
   local EntityMod = require("entity.logo_generation_entity")
   if data == nil then
     if self._logo_generation == nil then
@@ -253,12 +254,6 @@ function ErrorHandlingSDK:logo_generation(data)
     end
     return self._logo_generation
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:logo_generation() instead.
-function ErrorHandlingSDK:LogoGeneration(data)
-  local EntityMod = require("entity.logo_generation_entity")
   return EntityMod.new(self, data)
 end
 
