@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  LogoGeneration,
+  LogoGenerationLoadMatch,
+} from '../ErrorHandlingTypes'
 
 // TODO: needs Entity superclass
-class LogoGenerationEntity extends ErrorHandlingEntityBase {
+class LogoGenerationEntity extends ErrorHandlingEntityBase<LogoGeneration> {
 
   constructor(client: ErrorHandlingSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class LogoGenerationEntity extends ErrorHandlingEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: LogoGenerationLoadMatch, ctrl?: Control): Promise<LogoGeneration> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class LogoGenerationEntity extends ErrorHandlingEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<LogoGeneration> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `ErrorHandlingSDK.test()`.
 ## LogoGenerationEntity
 
 ```ts
-const logo_generation = client.LogoGeneration()
+const logo_generation = client.logo_generation
 ```
 
 ### Operations
@@ -120,7 +119,7 @@ const logo_generation = client.LogoGeneration()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.LogoGeneration().load({ id: 'logo_generation_id' })
+const result = await client.logo_generation.load({ id: 'logo_generation_id' })
 ```
 
 ### Common Methods

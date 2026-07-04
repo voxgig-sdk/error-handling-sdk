@@ -49,8 +49,7 @@ class TestLogoGenerationEntity:
         # LOAD
         logo_generation_ref01_ent = client.LogoGeneration(None)
         logo_generation_ref01_match_dt0 = {}
-        logo_generation_ref01_data_dt0_loaded, err = logo_generation_ref01_ent.load(logo_generation_ref01_match_dt0, None)
-        assert err is None
+        logo_generation_ref01_data_dt0_loaded = logo_generation_ref01_ent.load(logo_generation_ref01_match_dt0, None)
         assert logo_generation_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _logo_generation_basic_setup(extra):
         "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID": idmap,
         "ERRORHANDLING_TEST_LIVE": "FALSE",
         "ERRORHANDLING_TEST_EXPLAIN": "FALSE",
-        "ERRORHANDLING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _logo_generation_basic_setup(extra):
     if env.get("ERRORHANDLING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ERRORHANDLING_APIKEY"),
             },
             extra or {},
         ])

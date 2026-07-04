@@ -117,7 +117,6 @@ func logo_generationBasicSetup(extra map[string]any) *entityTestSetup {
 		"ERRORHANDLING_TEST_LOGO_GENERATION_ENTID": idmap,
 		"ERRORHANDLING_TEST_LIVE":      "FALSE",
 		"ERRORHANDLING_TEST_EXPLAIN":   "FALSE",
-		"ERRORHANDLING_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ERRORHANDLING_TEST_LOGO_GENERATION_ENTID"])
@@ -128,7 +127,6 @@ func logo_generationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ERRORHANDLING_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ERRORHANDLING_APIKEY"],
 			},
 			extra,
 		})

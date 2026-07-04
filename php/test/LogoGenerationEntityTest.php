@@ -49,8 +49,7 @@ class LogoGenerationEntityTest extends TestCase
         // LOAD
         $logo_generation_ref01_ent = $client->LogoGeneration(null);
         $logo_generation_ref01_match_dt0 = [];
-        [$logo_generation_ref01_data_dt0_loaded, $err] = $logo_generation_ref01_ent->load($logo_generation_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $logo_generation_ref01_data_dt0_loaded = $logo_generation_ref01_ent->load($logo_generation_ref01_match_dt0, null);
         $this->assertNotNull($logo_generation_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function logo_generation_basic_setup($extra)
         "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID" => $idmap,
         "ERRORHANDLING_TEST_LIVE" => "FALSE",
         "ERRORHANDLING_TEST_EXPLAIN" => "FALSE",
-        "ERRORHANDLING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function logo_generation_basic_setup($extra)
     if ($env["ERRORHANDLING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ERRORHANDLING_APIKEY"],
             ],
             $extra ?? [],
         ]);

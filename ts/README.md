@@ -9,9 +9,12 @@ The TypeScript SDK for the ErrorHandling API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/error-handling
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/error-handling-sdk/releases](https://github.com/voxgig-sdk/error-handling-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ErrorHandlingSDK } from 'error-handling'
+import { ErrorHandlingSDK } from '@voxgig-sdk/error-handling'
 
-const client = new ErrorHandlingSDK({
-  apikey: process.env.ERROR-HANDLING_APIKEY,
-})
+const client = new ErrorHandlingSDK()
 ```
 
 ### 3. Load a logogeneration
 
 ```ts
-const result = await client.LogoGeneration().load({ id: 'example_id' })
+const result = await client.logogeneration.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ErrorHandlingSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.logogeneration.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ErrorHandlingSDK({ apikey: '...' })
+const client = new ErrorHandlingSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.logogeneration
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ErrorHandlingSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ErrorHandlingSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ERROR-HANDLING_TEST_LIVE=TRUE
-ERROR-HANDLING_APIKEY=<your-key>
+ERROR_HANDLING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ErrorHandlingSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ErrorHandlingSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -265,7 +262,7 @@ API path: `/api/logo/neon`
 
 ### LogoGeneration
 
-Create an instance: `const logo_generation = client.LogoGeneration()`
+Create an instance: `const logo_generation = client.logo_generation`
 
 #### Operations
 
@@ -276,7 +273,7 @@ Create an instance: `const logo_generation = client.LogoGeneration()`
 #### Example: Load
 
 ```ts
-const logo_generation = await client.LogoGeneration().load({ id: 'logo_generation_id' })
+const logo_generation = await client.logo_generation.load({ id: 'logo_generation_id' })
 ```
 
 
@@ -337,7 +334,7 @@ error-handling/
 Import the SDK from the package root:
 
 ```ts
-import { ErrorHandlingSDK } from 'error-handling'
+import { ErrorHandlingSDK } from '@voxgig-sdk/error-handling'
 ```
 
 ### Entity state
@@ -347,11 +344,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const logogeneration = client.logogeneration
+await logogeneration.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// logogeneration.data() now returns the loaded logogeneration data
+// logogeneration.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         url: "https://freepublicapis.com/error-handling-api"
       }
