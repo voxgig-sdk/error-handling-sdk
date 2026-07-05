@@ -8,7 +8,7 @@ Complete API reference for the ErrorHandling PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/error-handling_sdk.php';
+require_once __DIR__ . '/errorhandling_sdk.php';
 
 $client = new ErrorHandlingSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = ErrorHandlingSDK::test();
 
 Create a new `LogoGenerationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ErrorHandlingUtility`
 
 Return a copy of the SDK utility object.
 
@@ -95,24 +95,24 @@ $logo_generation = $client->LogoGeneration();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->LogoGeneration()->load(["id" => "logo_generation_id"]);
+$result = $client->LogoGeneration()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -121,7 +121,7 @@ Set the entity match criteria.
 Create a new `LogoGenerationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

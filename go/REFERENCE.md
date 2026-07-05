@@ -100,7 +100,7 @@ logo_generation := client.LogoGeneration(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.LogoGeneration(nil).Load(map[string]any{"id": "logo_generation_id"}, nil)
+result, err := client.LogoGeneration(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -17,7 +17,7 @@ class LogoGeneration
 {
 }
 
-/** Match filter for LogoGeneration#load (any subset of LogoGeneration fields). */
+/** Request payload for LogoGeneration#load. */
 class LogoGenerationLoadMatch
 {
 }

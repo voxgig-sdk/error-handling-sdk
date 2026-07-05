@@ -221,7 +221,7 @@ class ErrorHandlingSDK:
 
 
     def LogoGeneration(self, data=None) -> "LogoGenerationEntity":
-        """Entity factory: client.LogoGeneration().list({}) / client.LogoGeneration().load({"id": ...})."""
+        """Entity factory: client.LogoGeneration().list() / client.LogoGeneration().load({"id": ...})."""
         from entity.logo_generation_entity import LogoGenerationEntity
         return LogoGenerationEntity(self, data)
 

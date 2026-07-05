@@ -8,7 +8,7 @@ Complete API reference for the ErrorHandling Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'error-handling_sdk'
+require_relative 'ErrorHandling_sdk'
 
 client = ErrorHandlingSDK.new(options)
 ```
@@ -96,7 +96,7 @@ logo_generation = client.LogoGeneration
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.LogoGeneration.load({ "id" => "logo_generation_id" })
+result = client.LogoGeneration.load()
 ```
 
 ### Common Methods

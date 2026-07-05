@@ -93,7 +93,7 @@ local logo_generation = client:LogoGeneration(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:LogoGeneration():load({ id = "logo_generation_id" })
+local result, err = client:LogoGeneration():load()
 ```
 
 ### Common Methods

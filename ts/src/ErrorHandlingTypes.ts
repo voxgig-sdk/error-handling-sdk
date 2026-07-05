@@ -8,5 +8,6 @@
 export interface LogoGeneration {
 }
 
-export type LogoGenerationLoadMatch = Partial<LogoGeneration>
+export interface LogoGenerationLoadMatch {
+}
 

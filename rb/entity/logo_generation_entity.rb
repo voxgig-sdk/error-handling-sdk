@@ -67,10 +67,12 @@ class LogoGenerationEntity
   
   # Load a single LogoGeneration.
   #
-  # @param reqmatch [LogoGenerationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [LogoGenerationLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.LogoGeneration.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [LogoGeneration, Hash] the loaded LogoGeneration; raises ErrorHandlingError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

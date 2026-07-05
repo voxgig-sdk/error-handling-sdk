@@ -119,7 +119,7 @@ const logo_generation = client.LogoGeneration()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.LogoGeneration().load({ id: 'logo_generation_id' })
+const result = await client.LogoGeneration().load()
 ```
 
 ### Common Methods

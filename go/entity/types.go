@@ -12,8 +12,7 @@ import "encoding/json"
 type LogoGeneration struct {
 }
 
-// LogoGenerationLoadMatch mirrors the logo_generation fields as an all-optional match
-// filter (Go analog of Partial<LogoGeneration>).
+// LogoGenerationLoadMatch is the typed request payload for LogoGeneration.LoadTyped.
 type LogoGenerationLoadMatch struct {
 }
 

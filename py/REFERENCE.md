@@ -8,7 +8,7 @@ Complete API reference for the ErrorHandling Python SDK.
 ### Constructor
 
 ```python
-from error-handling_sdk import ErrorHandlingSDK
+from errorhandling_sdk import ErrorHandlingSDK
 
 client = ErrorHandlingSDK(options)
 ```
@@ -90,7 +90,7 @@ logo_generation = client.LogoGeneration()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.LogoGeneration().load({"id": "logo_generation_id"})
+result = client.LogoGeneration().load()
 ```
 
 ### Common Methods
