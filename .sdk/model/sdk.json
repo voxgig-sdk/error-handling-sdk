@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -205,14 +202,17 @@
           "url": "https://freepublicapis.com/error-handling-api"
         },
         "description": "This API provides standardized error messages and status codes for various requests. It helps developers understand and fix issues by providing specific feedback when requests fail.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://abhi-api.vercel.app"
           }
         ],
+        "summary": "This API provides standardized error messages and status codes for various requests.",
         "title": "Error Handling API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://abhi-api.vercel.app"
       },
       "option": {},
       "target": {
@@ -265,6 +265,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -315,6 +318,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

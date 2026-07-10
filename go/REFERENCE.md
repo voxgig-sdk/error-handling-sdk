@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## LogoGenerationEntity
 
 ```go
-logo_generation := client.LogoGeneration(nil)
+logoGeneration := client.LogoGeneration(nil)
+fmt.Println(logoGeneration.GetName()) // "logo_generation"
 ```
 
 ### Operations
@@ -101,6 +102,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.LogoGeneration(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

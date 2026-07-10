@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single logogeneration — the value is the loaded record.
-    logogeneration, err := client.LogoGeneration(nil).Load(nil, nil)
+    // Load a single logoGeneration — the value is the loaded record.
+    logoGeneration, err := client.LogoGeneration(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(logogeneration)
+    fmt.Println(logoGeneration)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-logogeneration, err := client.LogoGeneration(nil).Load(
+logoGeneration, err := client.LogoGeneration(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(logogeneration) // the returned mock data
+fmt.Println(logoGeneration) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    logogeneration, err := client.LogoGeneration(nil).Load(nil, nil)
+    logoGeneration, err := client.LogoGeneration(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // logogeneration is the returned record
+    // logoGeneration is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -270,7 +270,7 @@ API path: `/api/logo/neon`
 
 ### LogoGeneration
 
-Create an instance: `logo_generation := client.LogoGeneration(nil)`
+Create an instance: `logoGeneration := client.LogoGeneration(nil)`
 
 #### Operations
 
@@ -281,11 +281,11 @@ Create an instance: `logo_generation := client.LogoGeneration(nil)`
 #### Example: Load
 
 ```go
-logo_generation, err := client.LogoGeneration(nil).Load(nil, nil)
+logoGeneration, err := client.LogoGeneration(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(logo_generation) // the loaded record
+fmt.Println(logoGeneration) // the loaded record
 ```
 
 
