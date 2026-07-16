@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewErrorHandlingSDK(nil)
+	// Configure from the environment: ERROR_HANDLING_APIKEY carries the API key and
+	// ERROR_HANDLING_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("ERROR_HANDLING_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("ERROR_HANDLING_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewErrorHandlingSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
