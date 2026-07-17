@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ErrorHandling SDK exists test
 
 local sdk = require("error-handling_sdk")
 
