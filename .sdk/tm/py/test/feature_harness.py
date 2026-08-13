@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ErrorHandlingControl
-from core.error import ErrorHandlingError
-from core.result import ErrorHandlingResult
-from core.spec import ErrorHandlingSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ErrorHandlingControl
+from projectname_sdk.core.error import ErrorHandlingError
+from projectname_sdk.core.result import ErrorHandlingResult
+from projectname_sdk.core.spec import ErrorHandlingSpec
 
 
 # True when this SDK was generated with the named feature.

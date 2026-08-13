@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ErrorHandlingSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ErrorHandlingSDK.test({
+  entity: {
+    logo_generation: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const logogeneration = await client.LogoGeneration().load()
-// logogeneration is a bare LogoGeneration populated with mock data
+// logogeneration is the LogoGeneration entity, populated with mock data
+// — call logogeneration.data() for the record itself
 console.log(logogeneration)
 ```
 
@@ -182,7 +191,7 @@ require_once 'errorhandling_sdk.php';
 $client = new ErrorHandlingSDK();
 
 
-// Load a specific logogeneration (returns the bare record; throws on error)
+// Load a specific logogeneration (returns the ENTITY; call data_get() for the record; throws on error)
 $logogeneration = $client->LogoGeneration()->load();
 print_r($logogeneration);
 ```
@@ -210,7 +219,7 @@ require_relative "ErrorHandling_sdk"
 client = ErrorHandlingSDK.new
 
 
-# Load a specific logogeneration (returns the bare record; raises on error)
+# Load a specific logogeneration (returns the ENTITY; call data_get for the record)
 logogeneration = client.LogoGeneration.load()
 puts logogeneration
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://freepublicapis.com/error-handling-api](https://freepublicapis.com/error-handling-api)
 

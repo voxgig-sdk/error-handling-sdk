@@ -51,6 +51,7 @@ class ErrorHandlingConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/logo/neon',
                   'parts' => [

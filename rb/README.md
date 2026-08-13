@@ -34,7 +34,7 @@ client = ErrorHandlingSDK.new
 
 ```ruby
 begin
-  # load returns the bare LogoGeneration record (raises on error).
+  # load returns the ENTITY — call data_get for the LogoGeneration record (raises on error).
   logogeneration = client.LogoGeneration.load()
   puts logogeneration
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ErrorHandlingSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 logogeneration = client.LogoGeneration.load()
 puts logogeneration
 ```
@@ -257,7 +258,7 @@ Create an instance: `logo_generation = client.LogoGeneration`
 #### Example: Load
 
 ```ruby
-# load returns the bare LogoGeneration record (raises on error).
+# load returns the ENTITY — call data_get for the LogoGeneration record (raises on error).
 logo_generation = client.LogoGeneration.load()
 ```
 

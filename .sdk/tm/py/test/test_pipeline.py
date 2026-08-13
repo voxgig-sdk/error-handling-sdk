@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ErrorHandlingSDK
-from core.error import ErrorHandlingError
-from core.result import ErrorHandlingResult
-from core.response import ErrorHandlingResponse
-from core.spec import ErrorHandlingSpec
-from feature.base_feature import ErrorHandlingBaseFeature
+from projectname_sdk.core.error import ErrorHandlingError
+from projectname_sdk.core.result import ErrorHandlingResult
+from projectname_sdk.core.response import ErrorHandlingResponse
+from projectname_sdk.core.spec import ErrorHandlingSpec
+from projectname_sdk.feature.base_feature import ErrorHandlingBaseFeature
 
 
 def _client():

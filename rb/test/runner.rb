@@ -23,8 +23,8 @@ module ErrorHandlingTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ERRORHANDLING_TEST_LIVE")
-    override = getenv("ERRORHANDLING_TEST_OVERRIDE")
+    live = getenv("ERROR_HANDLING_TEST_LIVE")
+    override = getenv("ERROR_HANDLING_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ErrorHandlingTestRunner
       end
     end
 
-    explain = getenv("ERRORHANDLING_TEST_EXPLAIN")
-    m["ERRORHANDLING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ERROR_HANDLING_TEST_EXPLAIN")
+    m["ERROR_HANDLING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

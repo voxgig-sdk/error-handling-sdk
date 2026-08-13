@@ -43,8 +43,8 @@ class ErrorHandlingTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ERRORHANDLING_TEST_LIVE');
-        $override = self::getenv('ERRORHANDLING_TEST_OVERRIDE');
+        $live = self::getenv('ERROR_HANDLING_TEST_LIVE');
+        $override = self::getenv('ERROR_HANDLING_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ErrorHandlingTestRunner
             }
         }
 
-        $explain = self::getenv('ERRORHANDLING_TEST_EXPLAIN');
+        $explain = self::getenv('ERROR_HANDLING_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ERRORHANDLING_TEST_EXPLAIN'] = $explain;
+            $m['ERROR_HANDLING_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

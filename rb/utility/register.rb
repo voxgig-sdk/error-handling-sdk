@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ErrorHandlingUtility.registrar = ->(u) {
   u.prepare_params = ErrorHandlingUtilities::PrepareParams
   u.prepare_path = ErrorHandlingUtilities::PreparePath
   u.prepare_query = ErrorHandlingUtilities::PrepareQuery
+  u.graphql_body = ErrorHandlingUtilities::GraphqlBody
+  u.graphql_errors = ErrorHandlingUtilities::GraphqlErrors
   u.result_basic = ErrorHandlingUtilities::ResultBasic
   u.result_body = ErrorHandlingUtilities::ResultBody
   u.result_headers = ErrorHandlingUtilities::ResultHeaders

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from errorhandling_sdk.utility.voxgig_struct import voxgig_struct as vs
 from errorhandling_sdk import ErrorHandlingSDK
-from core import helpers
+from errorhandling_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -36,7 +36,7 @@ class TestLogoGenerationEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set ERRORHANDLING_TEST_LOGO_GENERATION_ENTID JSON to run live")
+                        "set ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -83,21 +83,21 @@ def _logo_generation_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID")
+        "ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID": idmap,
-        "ERRORHANDLING_TEST_LIVE": "FALSE",
-        "ERRORHANDLING_TEST_EXPLAIN": "FALSE",
+        "ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID": idmap,
+        "ERROR_HANDLING_TEST_LIVE": "FALSE",
+        "ERROR_HANDLING_TEST_EXPLAIN": "FALSE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("ERRORHANDLING_TEST_LOGO_GENERATION_ENTID"))
+        env.get("ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 
-    if env.get("ERRORHANDLING_TEST_LIVE") == "TRUE":
+    if env.get("ERROR_HANDLING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
             },
@@ -105,13 +105,13 @@ def _logo_generation_basic_setup(extra):
         ])
         client = ErrorHandlingSDK(helpers.to_map(merged_opts))
 
-    _live = env.get("ERRORHANDLING_TEST_LIVE") == "TRUE"
+    _live = env.get("ERROR_HANDLING_TEST_LIVE") == "TRUE"
     return {
         "client": client,
         "data": entity_data,
         "idmap": idmap_resolved,
         "env": env,
-        "explain": env.get("ERRORHANDLING_TEST_EXPLAIN") == "TRUE",
+        "explain": env.get("ERROR_HANDLING_TEST_EXPLAIN") == "TRUE",
         "live": _live,
         "synthetic_only": _live and not _idmap_overridden,
         "now": int(time.time() * 1000),

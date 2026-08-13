@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = ErrorHandlingSDK.test()
 
 const logogeneration = await client.LogoGeneration().load()
-// logogeneration is a bare entity populated with mock response data
+// logogeneration is the entity, populated with mock response data
+// — call logogeneration.data() for the record itself
 console.log(logogeneration)
 ```
 

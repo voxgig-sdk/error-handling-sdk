@@ -65,11 +65,11 @@ def logo_generation_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ERRORHANDLING_TEST_LOGO_GENERATION_ENTID" => {},
-    "ERRORHANDLING_TEST_LIVE" => "FALSE",
+    "ERROR_HANDLING_TEST_LOGO_GENERATION_ENTID" => {},
+    "ERROR_HANDLING_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ERRORHANDLING_TEST_LIVE"] == "TRUE"
+  live = env["ERROR_HANDLING_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

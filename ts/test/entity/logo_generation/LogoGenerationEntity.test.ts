@@ -26,8 +26,8 @@ import {
 describe('LogoGenerationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ERRORHANDLING_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ERRORHANDLING_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ERROR_HANDLING_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ERROR_HANDLING_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ErrorHandlingSDK.test()
@@ -62,7 +62,7 @@ describe('LogoGenerationEntity', async () => {
     // LOAD
     const logo_generation_ref01_ent = client.LogoGeneration()
     const logo_generation_ref01_match_dt0: any = {}
-    const logo_generation_ref01_data_dt0 = await logo_generation_ref01_ent.load(logo_generation_ref01_match_dt0)
+    const logo_generation_ref01_data_dt0 = (await logo_generation_ref01_ent.load(logo_generation_ref01_match_dt0)).data()
     assert(null != logo_generation_ref01_data_dt0)
 
 
