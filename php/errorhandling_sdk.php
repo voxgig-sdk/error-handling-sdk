@@ -40,7 +40,7 @@ class ErrorHandlingSDK
         $utility = new ErrorHandlingUtility();
         $this->_utility = $utility;
 
-        $config = ErrorHandlingConfig::make_config();
+        $config = ErrorHandlingConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

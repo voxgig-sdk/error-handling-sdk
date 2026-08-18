@@ -28,7 +28,7 @@ class ErrorHandlingSDK
     utility = ErrorHandlingUtility.new
     @_utility = utility
 
-    config = ErrorHandlingConfig.make_config
+    config = ErrorHandlingConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

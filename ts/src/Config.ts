@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://abhi-api.vercel.app',
+    base: "https://abhi-api.vercel.app",
 
     headers: {
       "content-type": "application/json"
@@ -61,11 +61,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "Hello",
                     "kind": "query",
                     "name": "text",
@@ -91,11 +89,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

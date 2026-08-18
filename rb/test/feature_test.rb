@@ -15,7 +15,7 @@ require_relative "../ErrorHandling_sdk"
 module ErrorHandlingFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = ErrorHandlingConfig.make_config["feature"]
+    f = ErrorHandlingConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
