@@ -19,6 +19,9 @@ module ErrorHandlingConfig
     {
       "main" => {
         "name" => "ErrorHandling",
+        "slug" => "error-handling",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

@@ -33,6 +33,9 @@ class ErrorHandlingConfig
         return [
             "main" => [
                 "name" => "ErrorHandling",
+                "slug" => "error-handling",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
