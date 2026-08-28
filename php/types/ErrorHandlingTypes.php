@@ -20,5 +20,6 @@ class LogoGeneration
 /** Request payload for LogoGeneration#load. */
 class LogoGenerationLoadMatch
 {
+    public string $text;
 }
 

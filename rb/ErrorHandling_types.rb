@@ -13,6 +13,11 @@ class LogoGeneration
 end
 
 # Request payload for LogoGeneration#load.
-class LogoGenerationLoadMatch
-end
+#
+# @!attribute [rw] text
+#   @return [String]
+LogoGenerationLoadMatch = Struct.new(
+  :text,
+  keyword_init: true
+)
 

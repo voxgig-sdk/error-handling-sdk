@@ -14,6 +14,10 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+> **Features:** `test` — opt-in,
+> inactive until switched on, and configured per client. See the Features
+> section of any SDK README below for what each one does.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as a small set of **semantic entities** — LogoGeneration — that you
@@ -23,7 +27,7 @@ support (`load`):
 
 ```ts
 const client = new ErrorHandlingSDK()
-const logogeneration = await client.LogoGeneration().load()
+const logogeneration = await client.LogoGeneration().load({ text: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -47,7 +51,7 @@ const client = ErrorHandlingSDK.test({
     },
   },
 })
-const logogeneration = await client.LogoGeneration().load()
+const logogeneration = await client.LogoGeneration().load({ text: 'example_text' })
 // logogeneration is the LogoGeneration entity, populated with mock data
 // — call logogeneration.data() for the record itself
 console.log(logogeneration)
@@ -57,7 +61,7 @@ console.log(logogeneration)
 
 ```python
 client = ErrorHandlingSDK.test()
-logogeneration = client.LogoGeneration().load()
+logogeneration = client.LogoGeneration().load({"text": "example"})
 print(logogeneration)
 ```
 
@@ -68,7 +72,7 @@ print(logogeneration)
 $client = ErrorHandlingSDK::test([
     "entity" => ["logogeneration" => ["test01" => []]],
 ]);
-$logogeneration = $client->LogoGeneration()->load();
+$logogeneration = $client->LogoGeneration()->load(["text" => "example"]);
 ```
 
 ### Golang
@@ -87,14 +91,14 @@ result, err := client.LogoGeneration(nil).Load(
 client = ErrorHandlingSDK.test({
   "entity" => { "logogeneration" => { "test01" => {} } },
 })
-logogeneration = client.LogoGeneration.load()
+logogeneration = client.LogoGeneration.load({ "text" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:LogoGeneration():load()
+local result, err = client:LogoGeneration():load({ text = "example" })
 ```
 
 ## Packages
@@ -178,7 +182,7 @@ client = ErrorHandlingSDK()
 
 
 # Load a specific logogeneration (returns the record, raises on error)
-logogeneration = client.LogoGeneration().load()
+logogeneration = client.LogoGeneration().load({"text": "example_text"})
 print(logogeneration)
 ```
 
@@ -192,7 +196,7 @@ $client = new ErrorHandlingSDK();
 
 
 // Load a specific logogeneration (returns the ENTITY; call data_get() for the record; throws on error)
-$logogeneration = $client->LogoGeneration()->load();
+$logogeneration = $client->LogoGeneration()->load(["text" => "example_text"]);
 print_r($logogeneration);
 ```
 
@@ -204,7 +208,7 @@ import sdk "github.com/voxgig-sdk/error-handling-sdk/go"
 client := sdk.New()
 
 // Load logogeneration data
-logoGeneration, err := client.LogoGeneration(nil).Load(nil, nil)
+logoGeneration, err := client.LogoGeneration(nil).Load(map[string]any{"text": "example_text"}, nil)
 if err != nil {
     panic(err)
 }
@@ -220,7 +224,7 @@ client = ErrorHandlingSDK.new
 
 
 # Load a specific logogeneration (returns the ENTITY; call data_get for the record)
-logogeneration = client.LogoGeneration.load()
+logogeneration = client.LogoGeneration.load({ "text" => "example_text" })
 puts logogeneration
 ```
 
@@ -233,7 +237,7 @@ local client = sdk.new()
 
 
 -- Load a specific logogeneration
-local logogeneration, err = client:LogoGeneration():load()
+local logogeneration, err = client:LogoGeneration():load({ text = "example_text" })
 print(logogeneration)
 ```
 
@@ -339,6 +343,32 @@ forking the SDK.
 | **TestFeature** | In-memory mock transport for testing without a live server |
 
 Pass custom features via the `extend` option at construction time.
+
+## Customizing this SDK
+
+This repository contains its own generator (`.sdk/`), so the SDK is
+customizable without forking any upstream tool:
+
+- **The model** (`.sdk/model/`) declares everything this project owns:
+  package names, versions, active features, per-target settings. It is
+  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  specification language designed for building ontologies: easy to edit
+  by hand, and files unify rather than override, so small declarations
+  compose into one model. Regeneration re-reads it every time.
+- **Templates** (`.sdk/tm/`) and **components** (`.sdk/src/cmp/`) are
+  the two layers of generation, copied into this repo: templates are the
+  literal per-language source, components generate the API-shaped parts.
+- **Regeneration merges.** By default, newly generated content is
+  three-way merged into existing files, so generator updates and local
+  edits usually converge without manual conflict handling. A project can
+  opt for plain overwrite instead.
+- **Custom features and entire custom targets** arrive through sdkgen
+  packages (`voxgig-sdkgen package add`), on the same rails as the
+  bundled languages, and `voxgig-sdkgen doctor` reports any drift from
+  what a resync would write.
+
+How-to: [customize and propagate templates](https://github.com/voxgig/sdkgen/blob/main/docs/how-to/customize-and-propagate-templates.md).
+The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 
 ## Per-language documentation
 

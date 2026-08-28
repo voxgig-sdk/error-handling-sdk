@@ -9,6 +9,7 @@
 ---@class LogoGeneration
 
 ---@class LogoGenerationLoadMatch
+---@field text string
 
 local M = {}
 

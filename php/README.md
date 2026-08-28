@@ -36,7 +36,7 @@ $client = new ErrorHandlingSDK();
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the LogoGeneration record (throws on error).
-    $logogeneration = $client->LogoGeneration()->load();
+    $logogeneration = $client->LogoGeneration()->load(["text" => "example_text"]);
     print_r($logogeneration);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $logogeneration = $client->LogoGeneration()->load();
+    $logogeneration = $client->LogoGeneration()->load(["text" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,7 +125,7 @@ $client = ErrorHandlingSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$logogeneration = $client->LogoGeneration()->load();
+$logogeneration = $client->LogoGeneration()->load(["text" => "example"]);
 print_r($logogeneration);
 ```
 
@@ -269,8 +269,31 @@ Create an instance: `$logo_generation = $client->LogoGeneration();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the LogoGeneration record (throws on error).
-$logo_generation = $client->LogoGeneration()->load();
+$logo_generation = $client->LogoGeneration()->load(["text" => "text"]);
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -350,7 +373,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $logogeneration = $client->LogoGeneration();
-$logogeneration->load();
+$logogeneration->load(["text" => "example"]);
 
 // $logogeneration->data_get() now returns the logogeneration data from the last load
 // $logogeneration->match_get() returns the last match criteria

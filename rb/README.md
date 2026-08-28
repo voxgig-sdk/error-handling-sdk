@@ -35,7 +35,7 @@ client = ErrorHandlingSDK.new
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the LogoGeneration record (raises on error).
-  logogeneration = client.LogoGeneration.load()
+  logogeneration = client.LogoGeneration.load({ "text" => "example_text" })
   puts logogeneration
 rescue => err
   warn "load failed: #{err}"
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  logogeneration = client.LogoGeneration.load()
+  logogeneration = client.LogoGeneration.load({ "text" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,7 +119,7 @@ client = ErrorHandlingSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-logogeneration = client.LogoGeneration.load()
+logogeneration = client.LogoGeneration.load({ "text" => "example" })
 puts logogeneration
 ```
 
@@ -259,8 +259,31 @@ Create an instance: `logo_generation = client.LogoGeneration`
 
 ```ruby
 # load returns the ENTITY — call data_get for the LogoGeneration record (raises on error).
-logo_generation = client.LogoGeneration.load()
+logo_generation = client.LogoGeneration.load({ "text" => "text" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -340,7 +363,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 logogeneration = client.LogoGeneration
-logogeneration.load()
+logogeneration.load({ "text" => "example" })
 
 # logogeneration.data_get now returns the logogeneration data from the last load
 # logogeneration.match_get returns the last match criteria

@@ -18,6 +18,7 @@ type LogoGeneration struct {
 
 // LogoGenerationLoadMatch is the typed request payload for LogoGeneration.LoadTyped.
 type LogoGenerationLoadMatch struct {
+	Text string `json:"text"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -21,4 +21,4 @@ class LogoGeneration(TypedDict):
 
 
 class LogoGenerationLoadMatch(TypedDict):
-    pass
+    text: str
