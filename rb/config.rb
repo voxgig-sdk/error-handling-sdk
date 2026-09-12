@@ -65,10 +65,16 @@ module ErrorHandlingConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/logo/neon",
-                  "parts" => [
-                    "api",
-                    "logo",
-                    "neon",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "logo",
+                    },
+                    {
+                      "lit" => "neon",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -79,6 +85,11 @@ module ErrorHandlingConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "logo",
+                    "neon",
+                  ],
                 },
               ],
             },

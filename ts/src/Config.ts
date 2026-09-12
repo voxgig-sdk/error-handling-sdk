@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -88,10 +99,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/logo/neon",
-              "parts": [
-                "api",
-                "logo",
-                "neon"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "logo"
+                },
+                {
+                  "lit": "neon"
+                }
               ],
               "select": {
                 "exist": [
@@ -101,7 +118,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "logo",
+                "neon"
+              ]
             }
           ]
         }
@@ -117,6 +139,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

@@ -24,10 +24,16 @@ main: kit: entity: logo_generation: {
           }
           method: "GET"
           orig: "/api/logo/neon"
-          parts: [
-            "api"
-            "logo"
-            "neon"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "logo"
+            }
+            {
+              lit: "neon"
+            }
           ]
           select: {
             exist: [
