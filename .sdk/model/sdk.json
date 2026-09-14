@@ -796,7 +796,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/error-handling-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

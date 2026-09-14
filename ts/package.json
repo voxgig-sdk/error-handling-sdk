@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/error-handling",
+  "name": "@voxgig-sdk/error-handling-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Error Handling public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

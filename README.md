@@ -105,7 +105,7 @@ local result, err = client:LogoGeneration():load({ text = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
+| TypeScript | `@voxgig-sdk/error-handling-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
 | Python | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
 | PHP | `voxgig-sdk/error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/error-handling-sdk/go` | `go get github.com/voxgig-sdk/error-handling-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:LogoGeneration():load({ text = "example" })
 ### TypeScript
 
 ```ts
-import { ErrorHandlingSDK } from '@voxgig-sdk/error-handling'
+import { ErrorHandlingSDK } from '@voxgig-sdk/error-handling-sdk'
 
 const client = new ErrorHandlingSDK()
 
