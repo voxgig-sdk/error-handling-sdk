@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ErrorHandling SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ErrorHandlingFeatures
@@ -14,8 +17,14 @@ class ErrorHandlingFeatures
         switch ($name) {
             case "base":
                 return new ErrorHandlingBaseFeature();
+            case "ratelimit":
+                return new ErrorHandlingRatelimitFeature();
+            case "retry":
+                return new ErrorHandlingRetryFeature();
             case "test":
                 return new ErrorHandlingTestFeature();
+            case "timeout":
+                return new ErrorHandlingTimeoutFeature();
             default:
                 return new ErrorHandlingBaseFeature();
         }
@@ -31,7 +40,10 @@ class ErrorHandlingFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

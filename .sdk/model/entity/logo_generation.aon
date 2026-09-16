@@ -22,6 +22,12 @@ main: kit: entity: logo_generation: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/logo/neon"
+            json: "{\"operationId\":\"getNeonLogo\",\"parameters\":[{\"description\":\"Text to display in the neon logo\",\"example\":\"Hello\",\"in\":\"query\",\"name\":\"text\",\"required\":true,\"schema\":{\"minLength\":1,\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully generated neon logo\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"emptyText\":{\"summary\":\"Empty text parameter\",\"value\":{\"error\":\"Invalid parameter value\",\"message\":\"The 'text' parameter cannot be empty\",\"statusCode\":400}},\"missingText\":{\"summary\":\"Missing text parameter\",\"value\":{\"error\":\"Missing required parameter: text\",\"message\":\"The 'text' query parameter is required to generate a neon logo\",\"statusCode\":400}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Short error description\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message explaining the issue\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"required\":[\"error\",\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - missing or invalid text parameter\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Internal server error\",\"message\":\"An unexpected error occurred while processing your request\",\"statusCode\":500},\"schema\":{\"properties\":{\"error\":{\"description\":\"Short error description\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message explaining the issue\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"required\":[\"error\",\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/logo/neon"
           segments: [

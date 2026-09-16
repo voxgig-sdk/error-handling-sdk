@@ -1,12 +1,18 @@
 # ErrorHandling SDK feature factory
 
 from errorhandling_sdk.feature.base_feature import ErrorHandlingBaseFeature
+from errorhandling_sdk.feature.ratelimit_feature import ErrorHandlingRatelimitFeature
+from errorhandling_sdk.feature.retry_feature import ErrorHandlingRetryFeature
 from errorhandling_sdk.feature.test_feature import ErrorHandlingTestFeature
+from errorhandling_sdk.feature.timeout_feature import ErrorHandlingTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ErrorHandlingBaseFeature(),
+    "ratelimit": lambda: ErrorHandlingRatelimitFeature(),
+    "retry": lambda: ErrorHandlingRetryFeature(),
     "test": lambda: ErrorHandlingTestFeature(),
+    "timeout": lambda: ErrorHandlingTimeoutFeature(),
 }
 
 
