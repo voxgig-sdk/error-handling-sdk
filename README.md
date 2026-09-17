@@ -105,12 +105,12 @@ local result, err = client:LogoGeneration():load({ text = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/error-handling-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
-| Python | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
-| PHP | `voxgig-sdk/error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
+| TypeScript | `@voxgig-sdk/error-handling-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/tags) |
+| Python | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/tags) |
+| PHP | `voxgig-sdk/error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/error-handling-sdk/go` | `go get github.com/voxgig-sdk/error-handling-sdk/go@latest` |
-| Ruby | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
-| Lua | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/releases) |
+| Ruby | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/tags) |
+| Lua | `voxgig-sdk-error-handling` | publish pending — [install from git tag](https://github.com/voxgig-sdk/error-handling-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/error-handling-sdk/go-cli` | `go install github.com/voxgig-sdk/error-handling-sdk/go-cli/cmd/error-handling@latest` |
 | Go MCP server | `github.com/voxgig-sdk/error-handling-sdk/go-mcp` | `go get github.com/voxgig-sdk/error-handling-sdk/go-mcp@latest` |
 

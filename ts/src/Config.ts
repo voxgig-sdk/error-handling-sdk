@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      logo_generation: {
-      },
-
+        logo_generation: {
+        },
+  
     }
   }
 
